@@ -1,0 +1,52 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+.header{
+	background-color: yellow;/*change yellow to OldLace at the end*/
+	padding-top: 10px;
+	padding-bottom: 7px;
+}
+/**.adOne{
+	max-width: 800px;
+	margin: 5px auto 5px;
+	border: 5px solid black;
+}
+.adOne-text{
+	max-width: 400px;
+	border: 1px solid black;
+}
+.adOne .adOne-img{
+	max-width: 400px;
+	border: 3px solid blue;
+}*/
+
+.bottom{
+	background-color: pink;/*change the color to white at the end*/
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+.contactUs{
+	max-width: 900px;
+	margin: 5px auto 5px;
+	border: 2px solid green;
+}
+.contactUs p{
+	font-family:sans-serif;
+	font-size: 27px;
+}
+.contactUs button{
+	border: 1px solid orange;
+	background-color: white;
+	color: orange;
+  	padding: 15px;
+  	text-align: center;
+ 	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+  	margin: 4px 2px;
+  	cursor: pointer;
+	margin: 20px 400px 20px;
+}
