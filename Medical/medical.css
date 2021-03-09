@@ -1,10 +1,10 @@
-*{
+/**{
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-}
+}*/
 
-.frontAdvert{
+/*.frontAdvert{
 	background-color: White;
 	height: 520px;
 	width: 100%;
@@ -17,4 +17,38 @@
 	width: 100%;
 	border: none;
 	padding: 50px 35px;
+}*/
+
+
+.head{
+	background-color: OldLace;
+	height: 100%;
+	width: 100%;
+	border: none;
+	padding: 50px 35px;
 }
+/*Advertisement 1*/
+.advOne{
+	top: 50%;
+	left: 50%;
+	padding: 20px;
+}
+/*Ad details*/
+.advOne-text{
+	width: 50%;
+	float: left;
+}
+/*Ad pic*/
+.advOne-pic{
+	width: 50%;
+	float: right;
+}
+
+
+
+/*.bottom{
+	background-color: red; /*change the color to white at the end
+	width: 100%;
+	border: none;
+	padding: 50px 35px;
+}*/
