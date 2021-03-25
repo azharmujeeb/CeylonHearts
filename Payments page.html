@@ -341,6 +341,12 @@
     }
   </script>
   
+<script>
+  function success(){
+    window.alert("YOU HAVE SUCCESSFULLY DONATED!")
+  }
+</script>  
+</head>
   
 
   
@@ -419,6 +425,15 @@
           <div class="col-md-4 theme-blue">
             WELCOME TO CEYLON HEARTS WE HELP YOU GIVE WHEN NEEDED THE MOST.
           </div>
+          <div class="container">    
+            <div class="progress">
+              
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                40%
+              </div>
+            </div><p>THE AMOUNT THAT HAS BEEN DONATED</p>
+          </div>
+          
           <div class="col-md-8">
             <ul class="nav navbar-nav navbar-left donate-buttons" id="donate-buttons">
               <li><a href="#">
@@ -472,6 +487,7 @@
                     <h1 style="font-size: 5.5em; margin-top: 0;">Rs: <span id="price"></span></h1>
                     <em>Thank you!</em>
                   </div>
+
                   <div class="modal-body">
                     <div class="row">  
                       <section class="col-md-12">
@@ -509,7 +525,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">BACK</button>
-                    <button type="button" class="btn-green">CONTINUE</button>
+                    <button type="button" class="btn-green" onclick="success()">CONTINUE</button>
                   </div>
                 </div><!-- /.modal-content -->
               </div><!-- /.modal-dialog -->
