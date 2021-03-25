@@ -17,7 +17,7 @@
 
   var con = firebase.database().ref("users");
 
-  document.getElementById("form").addEventListener("submit",(e)=>{
+  document.getElementById("CeylonHeartsWebsite2").addEventListener("submit",(e)=>{
     e.preventDefault();
 
     var userinfo=con.push();
@@ -29,7 +29,7 @@
     });
     alert("sent");
     console.log("sent");
-    document.getElementById("form").reset();
+    document.getElementById("CeylonHeartsWebsite2").reset();
   });
 
   function getId(id){
