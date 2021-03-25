@@ -6,19 +6,11 @@
 <head>
 
   <meta charset="UTF-8">
-  
-<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
-<meta name="apple-mobile-web-app-title" content="CodePen">
-
-<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
-
-<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
-
 
   <title> CH FUND Responsive Login and Registration Form</title>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sign in & Sign Up Form | Vanilla Javascript</title>
+
   
   
   
@@ -45,7 +37,7 @@ section {
 section .container {
   position: relative;
   width: 1000px;
-  height: 700px;
+  height: 750px;
   background: #f7f5f4;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -220,6 +212,8 @@ section .container.active .signinBx .imgBx {
         <div class="imgBx"><img src="https://www.i-believe.org/wp-content/uploads/2017/10/1544293_1280x720-1170x658.jpg" alt="" /></div>
         <div class="formBx">
           <form action="" onsubmit="return false;">
+            <img src="" style="padding-left: 150px;" alt="logo">
+            <br><br>
             <h2>Sign In</h2>
             <input type="text" name="" placeholder="Username" />
             <input type="password" name="" placeholder="Password" />
@@ -243,7 +237,7 @@ section .container.active .signinBx .imgBx {
             <hr><hr>
             <p>picture of samuhdi card</p>
             <input type="file" id="myfile" name="myfile" placeholder="samudhi card">
-            
+            <br>
             <div>
               <select name="charity" class="custom-select">
                 <option selected>Select the cause</option>
@@ -255,6 +249,7 @@ section .container.active .signinBx .imgBx {
                 <option value="">Other</option>
               </select>
             </div>
+            <br>
             <label>Enter the picture of the charity</label>
             <input type="file" name="myfile">
             <input type="text" placeholder="write the reason to start a CHfund">
