@@ -13,23 +13,19 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
-
-$(document).ready((){
+function signup(){
+$(document).ready(()=>{
         // Do stuff here, including _calling_ codeAddress(), but not _defining_ it!
     
-  function signUp(){
-	
-    var fullname=document.getElementById("name");
-    var email = document.getElementById("email");
-    var password = document.getElementById("pass");
-    var telnumber= document.getElementById("num");
-
-    const promise = auth().createUserWithEmailAndPassword(fullname.value, email.value, password.value, telnumber.value);
+  
+	var email = document.getElementById("email");
+    var password= document.getElementById("pass");
+    
+    
+    const promise = auth().createUserWithEmailAndPassword( email.value, password.value);
     promise.catch(e => alert(e.message));
     
-    alert("Signed Up");
-
-   
-}
  
 })
+}
+alert("Signed Up");
