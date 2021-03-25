@@ -236,11 +236,11 @@ a {
 	<div class="row">
     <div class="col-md-6 mx-auto p-0">
         <div class="card">
-            <div class="login-box">
+            <div class="login-box" id="form">
                 <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
                     <div class="login-space">
                         <div class="login">
-                            <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" class="input" placeholder="Enter your username"> </div>
+                            <div class="group"> <label for="email" class="label">Email Address</label> <input id="email" type="text" class="input" placeholder="Enter your Email Addres"> </div>
                             <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Enter your password"> </div>
                             <div class="group"> <input id="check" type="checkbox" class="check" checked> <label for="check"><span class="icon"></span> Keep me Signed in</label> </div>
                             <div class="group"> <input type="submit" class="button" value="Sign In"> </div>
@@ -250,19 +250,9 @@ a {
                         <div class="sign-up-form">
                             <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" class="input" placeholder="Create your Username"> </div>
                             <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Create your password"> </div>
-                            <div class="group"> <label for="pass" class="label">Repeat Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Repeat your password"> </div>
-                            <div class="group"> <label for="pass" class="label">Email Address</label> <input id="pass" type="text" class="input" placeholder="Enter your email address"> </div>
-                            <!--<div class="group"> <label for="pass" class="label">Contact Number</label> <input id="pass" type="text" class="input" placeholder="Enter your Contact Number"> </div>
-                            <div class="group"> <label for="pass" class="label">National ID Number</label> <input id="pass" type="text" class="input" placeholder="Enter your National ID Number"> </div>
-                            <form action="/action_page.php">  
-
-  <label for="myfile" style="color:beige;">Enter picture of the samuhdi card:</label>
-  <input type="file" id="myfile" name="myfile"><br>
-  <input type="submit" class="button" value="Submit">
-</form>
--->
+                            <div class="group"> <label for="rpass" class="label">Repeat Password</label> <input id="rpass" type="password" class="input" data-type="password" placeholder="Repeat your password"> </div>
+                            <div class="group"> <label for="email" class="label">Email Address</label> <input id="email" type="text" class="input" placeholder="Enter your email address"> </div>
                             <div class="group"> <a href="C:\Users\VCT\Desktop\IP WEBSITE\further sign up.html"><input type="submit" class="button" value="Sign Up">  </a></div>
-
                             <!--<div class="hr"></div>-->
                             <div class="foot"> <label for="tab-1">Already Member?</label> </div>
                         </div>
@@ -273,14 +263,15 @@ a {
     </div>
 </div>
 <section>
-   <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+
+	<!-- This is the old firebase project which is not needed now, we have a new one. -->
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!-- <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script> -->
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
-
-<script>
+<!-- <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script> -->
+<!-- <script>
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
@@ -295,7 +286,16 @@ a {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-</script>
+</script> -->
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="signup.js"></script>
+
+
+
 </script>
 </section>
 
