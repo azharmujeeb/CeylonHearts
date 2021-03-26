@@ -15,9 +15,12 @@ $(document).ready(()=>{
 }*/
 
 
+/*window.alert("Mujeeb, dont worry it links :)");*/
+
 
 /*Mujeeb JS*/
-  // Your web app's Firebase configuration
+function signupfunc(){
+	    // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
     apiKey: "AIzaSyAa7iEF-LLXz0b4SsfxdrirbXnwLhvDonk",
@@ -37,29 +40,30 @@ $(document).ready(()=>{
   var namev, emailv, passv, numv, idv, samcv, typev, myfilev, textv;
 
   function Ready(){
-  	namev = document.getElementById('name').value;
-  	emailv = document.getElementById('email').value;
-  	passv = document.getElementById('pass').value;
-  	numv = document.getElementById('num').value;
-  	idv = document.getElementById('ID').value;
-  	samcv = document.getElementById('Scard').value;
-  	typev = document.getElementById('type').value;
-  	myfilev = document.getElementById('myfile').value;
-  	textv = document.getElementById('pic').value;
+    namev = document.getElementById('name').value;
+    emailv = document.getElementById('email').value;
+    passv = document.getElementById('pass').value;
+    numv = document.getElementById('num').value;
+    idv = document.getElementById('ID').value;
+    samcv = document.getElementById('Scard').value;
+    typev = document.getElementById('type').value;
+    myfilev = document.getElementById('myfile').value;
+    textv = document.getElementById('pic').value;
   }
 
 
-  document.getElementById('signup').onclick = function(){
-  	Ready();
-  	firebase.database().ref('user').set({
-  		fname = namev;
-  		femail = emailv;
-  		fpass = passv;
-  		fnum = numv;
-  		fid = idv;
-  		fsamc = samcv;
-  		ftype = typev;
-  		fmyfile = myfilev;
-  		ftext = textv;
-  	});
+      document.getElementById('signup').onclick = function(){
+    Ready();
+    firebase.database().ref('user').set({
+      fname = namev;
+      femail = emailv;
+      fpass = passv;
+      fnum = numv;
+      fid = idv;
+      fsamc = samcv;
+      ftype = typev;
+      fmyfile = myfilev;
+      ftext = textv;
+    });
   }
+}
