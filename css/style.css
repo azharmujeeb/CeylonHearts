@@ -5,12 +5,7 @@
   font-weight: normal;
   font-style: normal;
 }
-/* =======================================================
-*
-* 	Template Style 
-*	Edit this section
-*
-* ======================================================= */
+
 body {
   font-family: "Open Sans", Arial, sans-serif;
   line-height: 1.6;
@@ -48,7 +43,14 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   margin: 0 0 30px 0;
 }
-
+#logo {
+  display: inline-block;
+  margin: 15px; /* margin: 20px was off */
+  float: left;
+  height: 60px;
+  width: auto; /* correct proportions to specified height */
+  
+}
 figure {
   margin-bottom: 2em;
 }
@@ -72,6 +74,11 @@ figure {
   position: relative;
   margin-bottom: 0;
   z-index: 9999999;
+}
+.column_01{
+    float: left; width: 20%
+  background:url(https://assets.weforum.org/editor/iN3ykp838RIfdlx9Vi2A310nL28zxNqogFoKw0AJ-gM.png);
+
 }
 
 .stuck {
@@ -179,7 +186,9 @@ figure {
 @media screen and (max-width: 768px) {
   .fh5co-cover {
     heifght: inherit;
-    padding: 3em 0;
+    padding: 3em 1em;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 .fh5co-cover .btn {
@@ -367,7 +376,7 @@ figure {
 
 #fh5co-logo {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   font-size: 22px;
   text-transform: uppercase;
   margin-top: 35px;
@@ -1403,7 +1412,7 @@ figure {
 }
 
 .row-bottom-padded-md {
-  padding-bottom: 4em;
+  padding-bottom: 6em;
 }
 @media screen and (max-width: 768px) {
   .row-bottom-padded-md {
