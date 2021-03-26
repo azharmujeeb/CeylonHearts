@@ -9,8 +9,8 @@
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<script src="login and signup.js"></script>  
-  
+<!-- link script --> 
+
   
 <style>
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap');
@@ -226,10 +226,10 @@ section .container.active .signinBx .imgBx {
         <div class="formBx">
           <form action="" onsubmit="return false;">
             <h2>start a Ceylon Hearts FUND</h2>
-             <input type="name" name="" placeholder="full name" id="name" /> 
+             <input type="name" name="" placeholder="Full Name" id="name" /> 
             <input type="email" name="" placeholder="Email Address" id="email" />
             <input type="password" name="" placeholder="Create Password" id="pass"/>
-            <input type="tel" class="input" placeholder="Enter your Contact Number"  id="num" required>
+            <input type="tel" class="input" placeholder="Enter your Contact Number"  id="num" >
             <input type="text" class="input" placeholder="Enter your National ID Number" id="ID">
             <hr><br>
             <p>picture of samuhdi card</p>
@@ -247,14 +247,19 @@ section .container.active .signinBx .imgBx {
               </select>
             </div>
             <br>
-            <label>Enter the picture of the charity</label>
-            <input type="file" name="myfile">
+            <label>Insert a picture of the charity</label>
+            <input type="file" id="myfile">
             <input type="text" id="pic" placeholder="write the reason to start a Ceylon Hearts fund">
-            
-            <input type="submit" name="" value="Sign Up"  onclick="signup"/>
-            <p class="signup">
+            <button id="signup">Sign Up</button>
+            <!-- <input type="submit" value="Sign Up" id="signup" onclick="signup()" />
+            <p class="signup"> -->
+
+
+
+
+
               Already have an account ?
-              <a href="#" onclick="toggleForm();">Sign in.</a>
+              <a href="#" onclick="toggleForm()">Sign in.</a>
             </p>
           </form>
         </div>
@@ -274,17 +279,18 @@ const toggleForm = () => {
 //# sourceURL=pen.js
     </script>
 
-<!--Firebase sdk files-->
-<section>
- <!-- The core Firebase JS SDK is always required and must be listed first -->
- <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
- 
- <!-- TODO: Add SDKs for Firebase products that you want to use
-      https://firebase.google.com/docs/web/setup#available-libraries -->
- <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
- <script>
-   //website firebase config below
+<!--Firebase Libraries-->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+
+
+<script id="MainScript">
+  
+    // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
     apiKey: "AIzaSyAa7iEF-LLXz0b4SsfxdrirbXnwLhvDonk",
     authDomain: "ceylonheartswebsite2.firebaseapp.com",
@@ -297,11 +303,43 @@ const toggleForm = () => {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  firebase.analytics()
- </script>
+  firebase.analytics();
 
-</section>
+
+  var namev, emailv, passv, numv, idv, samcv, typev, myfilev, textv;
+
+  function Ready(){
+    namev = document.getElementById('name').value;
+    emailv = document.getElementById('email').value;
+    passv = document.getElementById('pass').value;
+    numv = document.getElementById('num').value;
+    idv = document.getElementById('ID').value;
+    samcv = document.getElementById('Scard').value;
+    typev = document.getElementById('type').value;
+    myfilev = document.getElementById('myfile').value;
+    textv = document.getElementById('pic').value;
+  }
+
+
+      document.getElementById('signup').onclick = function(){
+    Ready();
+    firebase.database().ref('user').set({
+      fname = namev;
+      femail = emailv;
+      fpass = passv;
+      fnum = numv;
+      fid = idv;
+      fsamc = samcv;
+      ftype = typev;
+      fmyfile = myfilev;
+      ftext = textv;
+    });
+  }
+
+
+</script>
+
+
 </body>
 
 </html>
