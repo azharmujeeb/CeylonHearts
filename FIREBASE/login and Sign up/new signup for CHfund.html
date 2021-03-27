@@ -185,6 +185,35 @@ section .container.active .signinBx .imgBx {
     width: 100%;
   }
 }
+
+/* logout CSS */
+.loggedin-div {
+  width: 20%;
+  margin: 0px auto;
+  margin-top: 150px;
+  padding: 20px;
+  display: none;
+}
+
+.loggedin-div button {
+  background: #5d8ffc;
+  color: #fff;
+  border: 1px solid #5d8ffc;
+  border-radius: 5px;
+  padding: 15px;
+  display: block;
+  width: 100%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+.main-div button:hover, .loggedin-div button:hover {
+  background: #fff;
+  color: #5d8ffc;
+  border: 1px solid #5d8ffc;
+  cursor: pointer;
+}
+
 </style>
 
   <script>
@@ -208,13 +237,22 @@ section .container.active .signinBx .imgBx {
   <div class="user signinBx">
         <div class="imgBx"><img src="https://www.i-believe.org/wp-content/uploads/2017/10/1544293_1280x720-1170x658.jpg" alt="" /></div>
         <div class="formBx">
-          <form action="" onsubmit="return false;">
+          <form action="" class="login-form"">
            <img src="Ceylon hearts logo.jpeg" style="padding-left: 120px; padding-bottom: 20px;" alt="logo">
             <br><br>
+            <div id="login_div">
             <h2>Sign In</h2>
-            <input type="email" name="" placeholder="Email Address" id="email"/>
-            <input type="password" name="" placeholder="Password" />
-            <input type="submit" name="" value="Login" onclick="login();" />
+            <input type="email" placeholder="Email..." id="email_field" />
+            <input type="password" placeholder="Password..." id="password_field" />
+            <button type="submit" name="" value="Login" onclick="login()"> login </button>
+            </div>
+            <!--logout button-->
+            <div id="user_div" class="loggedin-div">
+              <h3>Welcome User</h3>
+              <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
+              <button onclick="logout()">Logout</button>
+            </div>
+
             <p class="signup">
               Don't have an account ?
               <a href="#" onclick="toggleForm();">Sign Up.</a>
@@ -239,7 +277,7 @@ section .container.active .signinBx .imgBx {
               <select name="charity" class="custom-select" >
                 <option selected>Select the cause</option>
                 <option value="Education">Education</option>
-                <option value="Medica">Medical</option>
+                <option value="Medical">Medical</option>
                 <option value="Environment">Environment</option>
                 <option value="Animals">Animals</option>
                 <option value="Food">Food</option>
@@ -248,8 +286,8 @@ section .container.active .signinBx .imgBx {
             </div>
             <br>
             <label>Enter the picture of the charity</label>
-            <input type="file" name="myfile">
-            <input type="text" class="pic" placeholder="write the reason to start a Ceylon Hearts fund">
+            <input type="file" name="myfile" class="pic">
+            <input type="text" class="reason" placeholder="write the reason to start a Ceylon Hearts fund">
            
             <button type="submit" name="" value="Sign Up"> submit </button>
             <p class="signup">
@@ -277,6 +315,12 @@ const toggleForm = () => {
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  // Your web app's Firebase configuration
+
+
+</script>
 
 <script src="login and signup.js"></script> 
 </body>
