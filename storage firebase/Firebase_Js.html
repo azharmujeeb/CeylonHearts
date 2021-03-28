@@ -73,15 +73,25 @@
 
 					uploadTask.on('state_changed', function(snapshot){
 						var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
-						document.getElementById('UpProgress').innerHTML = 'upload'+progress+'%';
+						document.getElementById('UpProgress').innerHTML = 'upload '+progress+'%';
 					},
 
 
 					function(error){
 						alert('Error in saving the image');
+					},
+
+					function(){
+						uploadTask.snapshot.ref.getDownloadURL().then(function(url){
+							ImgUrl = url;
+						});
+
+						firebase.database().ref('Pictures/'+ImgName).set({
+							Name: ImgName,
+							Link: ImgUrl
+						});
+						alert('Image added successfully.');
 					}
-
-
 
 					);
 				}
