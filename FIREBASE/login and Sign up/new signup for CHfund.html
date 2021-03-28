@@ -266,12 +266,12 @@ section .container.active .signinBx .imgBx {
             <h2>start a Ceylon Hearts FUND</h2>
              <input type="name" name="" placeholder="full name" class="name" /> 
             <input type="email" name="" placeholder="Email Address" class="email" />
-            <input type="password" name="" placeholder="Create Password" class="pass"/>
-            <input type="text"  placeholder="Enter your Contact Number"  class="Number" >
+            <input type="password" name="" placeholder="Create Password" class="pass" required/>
+            <input type="text"  placeholder="Enter your Contact Number"  class="Number" required >
             <input type="text"  placeholder="Enter your National ID Number" class="ID">
            <hr><br>
             <p>picture of samuhdi card</p>
-            <input type="file" id="myfile" name="myfile" placeholder="samudhi card" class="Scard">
+            <input type="file" id="Scard" name="myfile" placeholder="samudhi card" class="Scard">
             <br>
              <div>
               <select name="charity" class="custom-select" >
@@ -286,7 +286,7 @@ section .container.active .signinBx .imgBx {
             </div>
             <br>
             <label>Enter the picture of the charity</label>
-            <input type="file" name="myfile" class="pic">
+            <input type="file" name="myfile" class="pic" id="charity">
             <input type="text" class="reason" placeholder="write the reason to start a Ceylon Hearts fund">
            
             <button type="submit" name="" value="Sign Up"> submit </button>
@@ -315,6 +315,8 @@ const toggleForm = () => {
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+
 <script>
   // Initialize Firebase
   // Your web app's Firebase configuration

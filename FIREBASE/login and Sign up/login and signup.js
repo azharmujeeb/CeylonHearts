@@ -77,6 +77,23 @@ function saveContactInfo(fullname, email, password,phone,IDnum,samCard,cause,pic
 
   };
 
+//picture to storage
+
+// upload the image
+var files = [];
+
+Document.getElementById('Scard').onclick = function(){
+  
+  firebase.storage().ref('image Samcard/').put(files[0]);
+  
+  }
+  
+  
+
+  
+
+
+
   // login firebase 
 
   firebase.auth().onAuthStateChanged(function(user) {
