@@ -5,10 +5,16 @@
 </head>
 <body>
 	<style>
-		img{height: 200px;, width: 200px;, border: 2px solid black;}
+
+		img{
+			height: 200px;
+			width: 200px;
+			border: 2px solid black;
+		}
+
 	</style>
 	Image name <input id="namebox" type="text"> <br><br>
-	<img id="myimg"> <label id="upProgress"></label> <br><br>
+	<img id="myimg"> <label id="UpProgress"></label> <br><br>
 
 	<button id="select">Select Image</button>
 		<button id="upload">Upload Image</button>
@@ -16,10 +22,12 @@
 
 
 			<!--add firebase libraries-->
-			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
 			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
 			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script> 
-			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script> 
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
 
 			<script id="MainScript">
 				//variables
@@ -36,9 +44,47 @@
 			    storageBucket: "ch-fund.appspot.com",
 			    messagingSenderId: "711033521341",
 			    appId: "1:711033521341:web:9d38507b98f3d045f6a3d4"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+				};
+				// Initialize Firebase
+				firebase.initializeApp(firebaseConfig);
+
+				//SELECTION PROCESS
+				document.getElementById("select").onclick = function(e){
+
+					var input = document.createElement('input');
+					input.type = 'file';
+
+					input.onchange = e => {
+						files = e.target.files;
+						reader = new FileReader();
+						reader.onload = function(){
+							document.getElementById("myimg").src = reader.result;
+						}
+						reader.readAsDataURL(files[0]);
+					}
+
+					input.click();
+				}
+
+				//UPLOAD PROCESS
+				document.getElementById(upload).onclick = function(){
+					ImgName = document.getElementById('namebox').value;
+					var uploadTask = firebase.storage().ref('Images/'+ImgName+".png").put(files[0]);
+
+					uploadTask.on('state_changed', function(snapshot){
+						var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
+						document.getElementById('UpProgress').innerHTML = 'upload'+progress+'%';
+					},
+
+
+					function(error){
+						alert('Error in saving the image');
+					}
+
+
+
+					);
+				}
 
 
 			</script>
