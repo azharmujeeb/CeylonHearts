@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Save and Load a Image from firebase js</title>
+</head>
+<body>
+	<style>
+		img{height: 200px;, width: 200px;, border: 2px solid black;}
+	</style>
+	Image name <input id="namebox" type="text"> <br><br>
+	<img id="myimg"> <label id="upProgress"></label> <br><br>
+
+	<button id="select">Select Image</button>
+		<button id="upload">Upload Image</button>
+			<button id="retrive">Retrieve Image</button>
+
+
+			<!--add firebase libraries-->
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script> 
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script> 
+
+			<script id="MainScript">
+				//variables
+				var ImgName, ImgUrl;
+				var Files = [];
+				var reader =  new FileReader();
+
+				//configurations
+				var firebaseConfig = {
+			    apiKey: "AIzaSyDRgFg4v54qiCNOyAp-rYVMLjxSvRg9buc",
+			    authDomain: "ch-fund.firebaseapp.com",
+			    databaseURL: "https://ch-fund-default-rtdb.firebaseio.com",
+			    projectId: "ch-fund",
+			    storageBucket: "ch-fund.appspot.com",
+			    messagingSenderId: "711033521341",
+			    appId: "1:711033521341:web:9d38507b98f3d045f6a3d4"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+
+			</script>
+
+
+</body>
+</html>
