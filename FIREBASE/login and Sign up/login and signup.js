@@ -77,23 +77,6 @@ function saveContactInfo(fullname, email, password,phone,IDnum,samCard,cause,pic
 
   };
 
-//picture to storage
-
-// upload the image
-var files = [];
-
-Document.getElementById('Scard').onclick = function(){
-  
-  firebase.storage().ref('image Samcard/').put(files[0]);
-  
-  }
-  
-  
-
-  
-
-
-
   // login firebase 
 
   firebase.auth().onAuthStateChanged(function(user) {
@@ -143,3 +126,41 @@ Document.getElementById('Scard').onclick = function(){
   }
 
 
+//select the img
+				//variables
+				var ImgName, ImgUrl;
+				var Files = [];
+				var reader =  new FileReader();
+//SELECTION PROCESS
+document.getElementById("select").onclick = function(e){
+
+  var input = document.createElement('input');
+  input.type = 'file';
+
+  input.onchange = e => {
+    files = e.target.files;
+    reader = new FileReader();
+    reader.onload = function(){
+      document.getElementById("myimg").src = reader.result;
+    }
+    reader.readAsDataURL(files[0]);
+  }
+
+  input.click();
+}
+
+
+// upload the image with name of img
+document.getElementById('Scard').onclick = function(){
+  ImgName = document.getElementById('namebox').value;
+  var uploadTask = firebase.storage().ref('Samudhi cards/'+ImgName+".png").put(files[0]);
+
+  uploadTask.on('state_changed', function(snapshot){
+    var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
+    document.getElementById('UpProgress').innerHTML = 'upload '+progress+'%';
+  },
+
+  function(error){
+    alert('Error in saving the image');
+  }
+  )}
