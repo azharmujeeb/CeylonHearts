@@ -1,0 +1,12 @@
+
+App:
+
+Donatee:
+Sign Up/Log In -> Homepage  -> Start a Ch Fund -> Sign Up/Log In -> authentication and cause -> Get permission from admin -> generated email ->
+Submition and generating the account(firebase).
+
+Donater:
+Sign Up/Log In -> Homepage -> Charities to be donated to. (From most clostest due date to furtherst).
+
+
+16 Dayss!!!!!!    
