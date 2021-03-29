@@ -148,12 +148,8 @@ document.getElementById("select").onclick = function(e){
   }
   
   input.click();
-  
-  
-  
+   
 }
-
-
 
 // upload the image with name of img
 document.getElementById('Scard').onclick = function(){
@@ -179,7 +175,7 @@ document.getElementById('Scard').onclick = function(){
 				var Files = [];
 				var reader =  new FileReader();
 //SELECTION PROCESS
-document.getElementById("select").onclick = function(e){
+document.getElementById("charity").onclick = function(e){
 
   var input = document.createElement('input');
   input.type = 'file';
@@ -195,17 +191,12 @@ document.getElementById("select").onclick = function(e){
   }
   
   input.click();
-  
-  
-  
+   
 }
-
-
-
 // upload the image with name of img
 document.getElementById('Scard').onclick = function(){
   ImgName = document.getElementById('namebox').value;
-  var uploadTask = firebase.storage().ref('Samudhi cards/'+ImgName+".png").put(files[0]);
+  var uploadTask = firebase.storage().ref('charity picture/'+ImgName+".png").put(files[0]);
 
   uploadTask.on('state_changed', function(snapshot){
     var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
