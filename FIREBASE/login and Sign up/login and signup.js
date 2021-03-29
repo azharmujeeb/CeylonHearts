@@ -42,7 +42,7 @@ function submitForm(e) {
    let password = document.querySelector(".pass").value;
    let phone = document.querySelector(".Number").value;
    let IDnum = document.querySelector(".ID").value;
-   let samCard = document.querySelector(".Scard").value;
+   //let samCard = document.querySelector(".Scard").value;
    let cause = document.querySelector(".custom-select").value;
    let picture = document.querySelector(".pic").value;
    let reason = document.querySelector(".reason").value;
@@ -50,15 +50,15 @@ function submitForm(e) {
 
 
 
-   console.log(fullname, email, password,phone,IDnum,samCard,cause,picture,reason);
+   console.log(fullname, email, password,phone,IDnum,cause,picture,reason);
 
-   saveContactInfo(fullname, email, password, phone, IDnum,samCard,cause,picture,reason);
+   saveContactInfo(fullname, email, password, phone, IDnum,cause,picture,reason);
 
    document.querySelector(".signup-form").reset(); 
 
 }
    // Save infos to Firebase
-function saveContactInfo(fullname, email, password,phone,IDnum,samCard,cause,picture,reason) {
+function saveContactInfo(fullname, email, password,phone,IDnum,cause,picture,reason) {
   let newSignupInfo = signupInfo.push();
 
   newSignupInfo.set({
@@ -67,7 +67,7 @@ function saveContactInfo(fullname, email, password,phone,IDnum,samCard,cause,pic
     password: password,
     phone:phone,
     IDnum:IDnum,
-    samCard:samCard,
+    //samCard:samCard,
     cause:cause,
     picture:picture,
     reason:reason,
@@ -141,13 +141,18 @@ document.getElementById("select").onclick = function(e){
     files = e.target.files;
     reader = new FileReader();
     reader.onload = function(){
-      document.getElementById("myimg").src = reader.result;
+     // document.getElementById("myimg").src = reader.result;
+     window.alert("photo inserted");
     }
     reader.readAsDataURL(files[0]);
   }
-
+  
   input.click();
+  
+  
+  
 }
+
 
 
 // upload the image with name of img
@@ -164,3 +169,51 @@ document.getElementById('Scard').onclick = function(){
     alert('Error in saving the image');
   }
   )}
+
+
+  // charity 
+
+  //select the img
+				//variables
+				var ImgName, ImgUrl;
+				var Files = [];
+				var reader =  new FileReader();
+//SELECTION PROCESS
+document.getElementById("select").onclick = function(e){
+
+  var input = document.createElement('input');
+  input.type = 'file';
+
+  input.onchange = e => {
+    files = e.target.files;
+    reader = new FileReader();
+    reader.onload = function(){
+     // document.getElementById("myimg").src = reader.result;
+     window.alert("photo inserted");
+    }
+    reader.readAsDataURL(files[0]);
+  }
+  
+  input.click();
+  
+  
+  
+}
+
+
+
+// upload the image with name of img
+document.getElementById('Scard').onclick = function(){
+  ImgName = document.getElementById('namebox').value;
+  var uploadTask = firebase.storage().ref('Samudhi cards/'+ImgName+".png").put(files[0]);
+
+  uploadTask.on('state_changed', function(snapshot){
+    var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
+    document.getElementById('UpProgress').innerHTML = 'upload '+progress+'%';
+  },
+
+  function(error){
+    alert('Error in saving the image');
+  }
+  )}
+

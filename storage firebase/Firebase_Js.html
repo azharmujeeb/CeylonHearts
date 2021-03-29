@@ -58,13 +58,16 @@
 						files = e.target.files;
 						reader = new FileReader();
 						reader.onload = function(){
-							document.getElementById("myimg").src = reader.result;
+						document.getElementById("myimg").src = reader.result;
 						}
 						reader.readAsDataURL(files[0]);
 					}
 
 					input.click();
+
+					
 				}
+				
 
 				//UPLOAD PROCESS
 				document.getElementById('upload').onclick = function(){
