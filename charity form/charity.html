@@ -2,10 +2,7 @@
 <html>
 <head>
 	<title>charity page</title>
-</head>
-<body style="background-color: #F7B68B">
-	
-	<style>
+		<style>
 
 		img{
 			background-color: #fff;
@@ -21,23 +18,29 @@
 		}
 
 	</style>
+</head>
+<body style="background-color: #F7B68B">
+	
 
+
+<form action="" class="charity-form">
+	
 	<div class="box">
-		<label id="UpProgress">add image below</label> <br><br>
-		
-		<img id="myimg" value="ADD PHOTO HERE" > 
+		Email <input class="email" type="text" id="namebox">
+		<br><br><h3>Add image below</h3>
+		<img id="charity" value="ADD PHOTO HERE" > 
 
 		<br><br>
 		<button id="select">Select Image</button>
-		
-			
-		<br><br>Email <input id="Email" type="text"> <br><br>
+					
+		<br>
 
-		Address<input id="Address" type="text"> <br><br>
+		
 
 	</div>
 	<hr>
 	<div style="margin-left: 35%; margin-bottom: 10%;">
+		Address<input class="address" type="text"> <br><br>
 		<label for="">Message</label><br />
       	<textarea
         class="message"
@@ -47,20 +50,20 @@
         rows="10"
         placeholder="message"> </textarea>
 	  <br>
-      
-	  <button id="upload">Submit</button>	
+      <label id="UpProgress"></label> <br><br>
+	  <button id="pic" type="submit">SUBMIT</button>	
 	</div>
-
+</form>
 
 	
 
-
+<!--
 	<style type="text/css">
 		#select{
 			color: #22b352;
 		}
 	</style>
-
+-->
 
 			<!--add firebase libraries-->
 			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
@@ -69,78 +72,8 @@
 			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
 			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script> -->
 
-
-			<script id="MainScript">
-				//variables
-				var ImgName, ImgUrl;
-				var Files = [];
-				var reader =  new FileReader();
-
-				//configurations
-				var firebaseConfig = {
-			    apiKey: "AIzaSyDRgFg4v54qiCNOyAp-rYVMLjxSvRg9buc",
-			    authDomain: "ch-fund.firebaseapp.com",
-			    databaseURL: "https://ch-fund-default-rtdb.firebaseio.com",
-			    projectId: "ch-fund",
-			    storageBucket: "ch-fund.appspot.com",
-			    messagingSenderId: "711033521341",
-			    appId: "1:711033521341:web:9d38507b98f3d045f6a3d4"
-				};
-				// Initialize Firebase
-				firebase.initializeApp(firebaseConfig);
-
-				//SELECTION PROCESS
-				document.getElementById("select").onclick = function(e){
-
-					var input = document.createElement('input');
-					input.type = 'file';
-
-					input.onchange = e => {
-						files = e.target.files;
-						reader = new FileReader();
-						reader.onload = function(){
-						document.getElementById("myimg").src = reader.result;
-						}
-						reader.readAsDataURL(files[0]);
-					}
-
-					input.click();
-
-					
-				}
-				
-
-				//UPLOAD PROCESS
-				document.getElementById('upload').onclick = function(){
-					ImgName = document.getElementById('namebox').value;
-					var uploadTask = firebase.storage().ref('Images/'+ImgName+".png").put(files[0]);
-
-					uploadTask.on('state_changed', function(snapshot){
-						var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
-						document.getElementById('UpProgress').innerHTML = 'upload '+progress+'%';
-					},
-
-
-					function(error){
-						alert('Error in saving the image');
-					},
-
-					function(){
-						uploadTask.snapshot.ref.getDownloadURL().then(function(url){
-							ImgUrl = url;
-						});
-
-						firebase.database().ref('Pictures/'+ImgName).set({
-							Name: ImgName,
-							Link: ImgUrl
-						});
-						alert('Image added successfully.');
-					}
-
-					);
-				}
-
-			</script>
+			<script src="charity.js"></script>
+			
  
 </body>
 </html>
