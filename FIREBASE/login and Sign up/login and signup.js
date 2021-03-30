@@ -40,37 +40,39 @@ function submitForm(e) {
    let fullname = document.querySelector(".name").value;
    let email = document.querySelector(".email").value;
    let password = document.querySelector(".pass").value;
+   let  confirm_password = document.querySelector(".conpass").value;
    let phone = document.querySelector(".Number").value;
    let IDnum = document.querySelector(".ID").value;
    //let samCard = document.querySelector(".Scard").value;
    let cause = document.querySelector(".custom-select").value;
    //let picture = document.querySelector(".pic").value;
-   let reason = document.querySelector(".reason").value;
+   //let reason = document.querySelector(".reason").value;
    
 
 
 
-   console.log(fullname, email, password,phone,IDnum,cause,reason);
+   console.log(fullname, email, password,confirm_password,phone,IDnum,cause);
 
-   saveContactInfo(fullname, email, password, phone, IDnum,cause,reason);
+   saveContactInfo(fullname, email, password,confirm_password, phone, IDnum,cause);
 
    document.querySelector(".signup-form").reset(); 
 
 }
    // Save infos to Firebase
-function saveContactInfo(fullname, email, password,phone,IDnum,cause,reason) {
+function saveContactInfo(fullname, email, password,confirm_password,phone,IDnum,cause) {
   let newSignupInfo = signupInfo.push();
 
   newSignupInfo.set({
     fullname: fullname,
     email: email,
     password: password,
+    confirm_password:confirm_password,
     phone:phone,
     IDnum:IDnum,
     //samCard:samCard,
     cause:cause,
     //picture:picture,
-    reason:reason,
+    //reason:reason,
   });
   window.alert("success!");
  
@@ -152,7 +154,7 @@ document.getElementById("select").onclick = function(e){
 }
 
 // upload the image with name of img
-document.getElementsByClassName('.Scard').onclick = function(){
+document.getElementById('Scard').onclick = function(){
   ImgName = document.getElementById('namebox').value;
   var uploadTask = firebase.storage().ref('Samudhi cards/'+ImgName+".png").put(files[0]);
 
@@ -167,44 +169,5 @@ document.getElementsByClassName('.Scard').onclick = function(){
   )}
 
 
-  // charity 
-
-  //select the img
-				//variables
-				var ImgName, ImgUrl;
-				var Files = [];
-				var reader =  new FileReader();
-//SELECTION PROCESS
-document.getElementById("charity").onclick = function(e){
-
-  var input = document.createElement('input');
-  input.type = 'file';
-
-  input.onchange = e => {
-    files = e.target.files;
-    reader = new FileReader();
-    reader.onload = function(){
-     // document.getElementById("myimg").src = reader.result;
-     window.alert("photo inserted");
-    }
-    reader.readAsDataURL(files[0]);
-  }
-  
-  input.click();
-   
-}
-// upload the image with name of img
-document.getElementsByClassName('.Scard').onclick = function(){
-  ImgName = document.getElementById('namenemail').value;
-  var uploadTask = firebase.storage().ref('charity picture/'+ImgName+".png").put(files[0]);
-
-  uploadTask.on('state_changed', function(snapshot){
-    var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
-    document.getElementById('UProgress').innerHTML = 'upload '+progress+'%';
-  },
-
-  function(error){
-    alert('Error in saving the image');
-  }
-  )}
+ 
 

@@ -97,16 +97,16 @@ on <= small devices and 4/12 page width on >= medium devices -->
 </div>                    
 </div>
 <div class="panel-body">
-<form role="form" id="payment-form">
+<form role="form" id="payment-form" class="payment">
 <div class="row">
 <div class="col-xs-12">
 <div class="form-group">
- <label for="couponCode">NAME</label>
-<input type="text" class="form-control" name="name" /> 
+ <label for="couponCode">FULLNAME</label>
+<input type="text"  name="name" class="name"/> 
 <label for="couponCode">EMAIL</label>
-<input type="text" class="form-control" name="email" />
+<input type="text"  name="email" class="email" />
 <label for="couponCode">ENTER YOUR DONATION</label>
-<input type="text" class="form-control" name="address" />
+<input type="text" name="amount" value="Rs. " class="amount" />
 <label for="creditOrDebitNumber">CREDIT OR DEBIT NUMBER</label>
 <div class="input-group">
 <input 
@@ -179,6 +179,13 @@ required
 </div>
 </div>
 
+
+<!--add firebase libraries-->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+<script src="paymentform.js"></script>
+<script src="paymentvalidation.js"></script>
+
+
 	<!-- If you're using Stripe for payments -->
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 	
@@ -188,131 +195,7 @@ required
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js'></script>
       <script id="rendered-js" >
-var $form = $('#payment-form');
-$form.on('submit', payWithStripe);
 
-/* If you're using Stripe for payments */
-function payWithStripe(e) {
-  e.preventDefault();
-
-  /* Visual feedback */
-  $form.find('[type=submit]').html('Validating <i class="fa fa-spinner fa-pulse"></i>');
-
-  var PublishableKey = 'pk_test_b1qXXwATmiaA1VDJ1mOVVO1p'; // Replace with your API publishable key
-  Stripe.setPublishableKey(PublishableKey);
-
-  /* Create token */
-  var expiry = $form.find('[name=cardExpiry]').payment('cardExpiryVal');
-  var ccData = {
-    number: $form.find('[name=cardNumber]').val().replace(/\s/g, ''),
-    cvc: $form.find('[name=cardCVC]').val(),
-    exp_month: expiry.month,
-    exp_year: expiry.year };
-
-
-  Stripe.card.createToken(ccData, function stripeResponseHandler(status, response) {
-    if (response.error) {
-      /* Visual feedback */
-      $form.find('[type=submit]').html('Try again');
-      /* Show Stripe errors on the form */
-      $form.find('.payment-errors').text(response.error.message);
-      $form.find('.payment-errors').closest('.row').show();
-    } else {
-      /* Visual feedback */
-      $form.find('[type=submit]').html('Processing <i class="fa fa-spinner fa-pulse"></i>');
-      /* Hide Stripe errors on the form */
-      $form.find('.payment-errors').closest('.row').hide();
-      $form.find('.payment-errors').text("");
-      // response contains id and card, which contains additional card details            
-      console.log(response.id);
-      console.log(response.card);
-      var token = response.id;
-      // AJAX - you would send 'token' to your server here.
-      $.post('/account/stripe_card_token', {
-        token: token })
-
-      // Assign handlers immediately after making the request,
-      .done(function (data, textStatus, jqXHR) {
-        $form.find('[type=submit]').html('Payment successful <i class="fa fa-check"></i>').prop('disabled', true);
-      }).
-      fail(function (jqXHR, textStatus, errorThrown) {
-        $form.find('[type=submit]').html('There was a problem').removeClass('success').addClass('error');
-        /* Show Stripe errors on the form */
-        $form.find('.payment-errors').text('Try refreshing the page and trying again.');
-        $form.find('.payment-errors').closest('.row').show();
-      });
-    }
-  });
-}
-/* Fancy restrictive input formatting via jQuery.payment library*/
-$('input[name=cardNumber]').payment('formatCardNumber');
-$('input[name=cardCVC]').payment('formatCardCVC');
-$('input[name=cardExpiry').payment('formatCardExpiry');
-
-/* Form validation using Stripe client-side validation helpers */
-jQuery.validator.addMethod("cardNumber", function (value, element) {
-  return this.optional(element) || Stripe.card.validateCardNumber(value);
-}, "Please specify a valid credit card number.");
-
-jQuery.validator.addMethod("cardExpiry", function (value, element) {
-  /* Parsing month/year uses jQuery.payment library */
-  value = $.payment.cardExpiryVal(value);
-  return this.optional(element) || Stripe.card.validateExpiry(value.month, value.year);
-}, "Invalid expiration date.");
-
-jQuery.validator.addMethod("cardCVC", function (value, element) {
-  return this.optional(element) || Stripe.card.validateCVC(value);
-}, "Invalid CVC.");
-
-validator = $form.validate({
-  rules: {
-    cardNumber: {
-      required: true,
-      cardNumber: true },
-
-    cardExpiry: {
-      required: true,
-      cardExpiry: true },
-
-    cardCVC: {
-      required: true,
-      cardCVC: true } },
-
-
-  highlight: function (element) {
-    $(element).closest('.form-control').removeClass('success').addClass('error');
-  },
-  unhighlight: function (element) {
-    $(element).closest('.form-control').removeClass('error').addClass('success');
-  },
-  errorPlacement: function (error, element) {
-    $(element).closest('.form-group').append(error);
-  } });
-
-
-paymentFormReady = function () {
-  if ($form.find('[name=cardNumber]').hasClass("success") &&
-  $form.find('[name=cardExpiry]').hasClass("success") &&
-  $form.find('[name=cardCVC]').val().length > 1) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-$form.find('[type=submit]').prop('disabled', true);
-var readyInterval = setInterval(function () {
-  if (paymentFormReady()) {
-    $form.find('[type=submit]').prop('disabled', false);
-    clearInterval(readyInterval);
-  }
-}, 250);
-
-
-/*
-https://goo.gl/PLbrBK
-*/
-//# sourceURL=pen.js
     </script>
 
   

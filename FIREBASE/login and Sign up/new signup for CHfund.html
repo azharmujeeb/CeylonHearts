@@ -267,12 +267,14 @@ section .container.active .signinBx .imgBx {
              <input type="name" name="" placeholder="full name" class="name" /> 
             <input type="email" name="" placeholder="Email Address" class="email" />
             <input type="password" name="" placeholder="Create Password" class="pass" required/>
+            <input type="password" name="" placeholder="Confirm Password" class="conpass" required/>
+
             <input type="text"  placeholder="Enter your Contact Number"  class="Number" required >
             <input type="text"  placeholder="Enter your National ID Number" class="ID">
            <hr><br>
-            <p>picture of samuhdi card</p>
+            <p>picture of samuhdi card or NIC</p>
             <input id="namebox" type="email" placeholder="Email address again"> 
-            <input  id="select" name="samudhi card" placeholder="click here to add samudhi card photo">
+            <input  id="select" name="samudhi card" placeholder="click here to add samudhi card or NIC photo">
             <label id="UpProgress"></label>
             <br>
              <div>
@@ -280,21 +282,16 @@ section .container.active .signinBx .imgBx {
                 <option selected>Select the cause</option>
                 <option value="Education">Education</option>
                 <option value="Medical">Medical</option>
-                <option value="Environment">Environment</option>
+                <option value="Emergency">Emergency</option>
                 <option value="Animals">Animals</option>
-                <option value="Food">Food</option>
-                <option value="Other">Other</option>
+                <option value="covid 19">Covid 19</option>
+                
               </select>
             </div>
-            <br>
-            <label>Enter the picture of the charity</label>
             
-            <input id="namenemail" type="text" placeholder="Enter email again and charity name"> 
-	         <input name="" class="" id="charity" placeholder="click here to insert picture of charity">
-           <label id="UProgress"></label>
-            <input type="text" class="reason" placeholder="write the reason to start a Ceylon Hearts fund">
+            
            
-            <button type="submit" name="" value="Sign Up" class="Scard"> submit </button>
+            <button type="submit" name="" value="Sign Up" id="Scard"> submit </button>
             <p class="signup">
               Already have an account ?
               <a href="#" onclick="toggleForm();">Sign in.</a>
