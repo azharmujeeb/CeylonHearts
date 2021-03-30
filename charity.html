@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body style="background-color: #F7B68B">
+	
+	<style>
+
+		img{
+			background-color: #fff;
+			height: 200px;
+			width: 200px;
+			border: 2px solid black;
+		}
+
+		.box{
+			padding-top: 10%;
+			padding-left: 40%;
+		}
+
+	</style>
+
+	<div class="box">
+		
+		<img id="myimg"> 
+
+		<label id="UpProgress"></label> <br><br>
+		Image name <input id="namebox" type="text"> <br><br>
+
+		<button id="select">Select Image</button>
+		<button id="upload">Upload Image</button>
+				
+	</div>
+
+
+	<style type="text/css">
+		#select{
+			color: #22b352;
+		}
+	</style>
+
+
+			<!--add firebase libraries-->
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+		<!-- 	<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script> 
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script> -->
+
+
+			<script id="MainScript">
+				//variables
+				var ImgName, ImgUrl;
+				var Files = [];
+				var reader =  new FileReader();
+
+				//configurations
+				var firebaseConfig = {
+			    apiKey: "AIzaSyDRgFg4v54qiCNOyAp-rYVMLjxSvRg9buc",
+			    authDomain: "ch-fund.firebaseapp.com",
+			    databaseURL: "https://ch-fund-default-rtdb.firebaseio.com",
+			    projectId: "ch-fund",
+			    storageBucket: "ch-fund.appspot.com",
+			    messagingSenderId: "711033521341",
+			    appId: "1:711033521341:web:9d38507b98f3d045f6a3d4"
+				};
+				// Initialize Firebase
+				firebase.initializeApp(firebaseConfig);
+
+				//SELECTION PROCESS
+				document.getElementById("select").onclick = function(e){
+
+					var input = document.createElement('input');
+					input.type = 'file';
+
+					input.onchange = e => {
+						files = e.target.files;
+						reader = new FileReader();
+						reader.onload = function(){
+						document.getElementById("myimg").src = reader.result;
+						}
+						reader.readAsDataURL(files[0]);
+					}
+
+					input.click();
+
+					
+				}
+				
+
+				//UPLOAD PROCESS
+				document.getElementById('upload').onclick = function(){
+					ImgName = document.getElementById('namebox').value;
+					var uploadTask = firebase.storage().ref('Images/'+ImgName+".png").put(files[0]);
+
+					uploadTask.on('state_changed', function(snapshot){
+						var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
+						document.getElementById('UpProgress').innerHTML = 'upload '+progress+'%';
+					},
+
+
+					function(error){
+						alert('Error in saving the image');
+					},
+
+					function(){
+						uploadTask.snapshot.ref.getDownloadURL().then(function(url){
+							ImgUrl = url;
+						});
+
+						firebase.database().ref('Pictures/'+ImgName).set({
+							Name: ImgName,
+							Link: ImgUrl
+						});
+						alert('Image added successfully.');
+					}
+
+					);
+				}
+
+			</script>
+ 
+</body>
+</html>
+
+	<!--
+	<label>Enter the picture of the charity</label>
+            
+        <input id="namenemail" type="text" placeholder="Enter email again and charity name"> 
+	    <input name="" class="" id="charity" placeholder="click here to insert picture of charity">
+    
+    <label id="UProgress"></label>
+            <input type="text" class="reason" placeholder="write the reason to start a Ceylon Hearts fund">
+        -->
