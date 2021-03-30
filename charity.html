@@ -12,6 +12,7 @@
 			height: 400px;
 			width: 700px;
 			border: 2px solid black;
+
 		}
 
 		.box{
@@ -22,31 +23,32 @@
 	</style>
 
 	<div class="box">
+		<label id="UpProgress">add image below</label> <br><br>
 		
 		<img id="myimg" value="ADD PHOTO HERE" > 
 
-		<label id="UpProgress"></label> <br><br>
-		Image name <input id="namebox" type="text"> <br><br>
-
+		<br><br>
 		<button id="select">Select Image</button>
 		<button id="upload">Upload Image</button>
 			
+		<br><br>Email <input id="Email" type="text"> <br><br>
+
+		Address<input id="Address" type="text"> <br><br>
+
 	</div>
 	<hr>
 	<div style="margin-left: 35%; margin-bottom: 10%;">
 		<label for="">Message</label><br />
-      <textarea
+      	<textarea
         class="message"
         name=""
         id=""
         cols="30"
         rows="10"
-        placeholder="message"
-		
-      ></textarea
-      >
+        placeholder="message"> </textarea>
 	  <br>
-	  <button id="upload">Upload Image</button>	
+      
+	  <button id="upload">Submit</button>	
 	</div>
 
 
@@ -143,12 +145,4 @@
 </body>
 </html>
 
-	<!--
-	<label>Enter the picture of the charity</label>
-            
-        <input id="namenemail" type="text" placeholder="Enter email again and charity name"> 
-	    <input name="" class="" id="charity" placeholder="click here to insert picture of charity">
-    
-    <label id="UProgress"></label>
-            <input type="text" class="reason" placeholder="write the reason to start a Ceylon Hearts fund">
-        -->
+	
