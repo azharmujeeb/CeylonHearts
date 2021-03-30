@@ -266,8 +266,8 @@ section .container.active .signinBx .imgBx {
             <h2>start a Ceylon Hearts FUND</h2>
              <input type="name" name="" placeholder="full name" class="name" /> 
             <input type="email" name="" placeholder="Email Address" class="email" />
-            <input type="password" name="" placeholder="Create Password" class="pass" required/>
-            <input type="password" name="" placeholder="Confirm Password" class="conpass" required/>
+            <input type="password" name="" placeholder="Create Password" class="pass" id="password" required/>
+            <input type="password" name="" placeholder="Confirm Password" class="conpass" id="password2" required/>
 
             <input type="text"  placeholder="Enter your Contact Number"  class="Number" required >
             <input type="text"  placeholder="Enter your National ID Number" class="ID">
@@ -291,7 +291,7 @@ section .container.active .signinBx .imgBx {
             
             
            
-            <button type="submit" name="" value="Sign Up" id="Scard"> submit </button>
+            <button type="submit" name="" value="Sign Up"> submit </button>
             <p class="signup">
               Already have an account ?
               <a href="#" onclick="toggleForm();">Sign in.</a>
@@ -327,6 +327,7 @@ const toggleForm = () => {
 </script>
 
 <script src="login and signup.js"></script> 
+<script src="validation for sign up.js"></script>
 </body>
 
 </html>
