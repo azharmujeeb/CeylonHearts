@@ -44,21 +44,21 @@ function submitForm(e) {
    let IDnum = document.querySelector(".ID").value;
    //let samCard = document.querySelector(".Scard").value;
    let cause = document.querySelector(".custom-select").value;
-   let picture = document.querySelector(".pic").value;
+   //let picture = document.querySelector(".pic").value;
    let reason = document.querySelector(".reason").value;
    
 
 
 
-   console.log(fullname, email, password,phone,IDnum,cause,picture,reason);
+   console.log(fullname, email, password,phone,IDnum,cause,reason);
 
-   saveContactInfo(fullname, email, password, phone, IDnum,cause,picture,reason);
+   saveContactInfo(fullname, email, password, phone, IDnum,cause,reason);
 
    document.querySelector(".signup-form").reset(); 
 
 }
    // Save infos to Firebase
-function saveContactInfo(fullname, email, password,phone,IDnum,cause,picture,reason) {
+function saveContactInfo(fullname, email, password,phone,IDnum,cause,reason) {
   let newSignupInfo = signupInfo.push();
 
   newSignupInfo.set({
@@ -69,7 +69,7 @@ function saveContactInfo(fullname, email, password,phone,IDnum,cause,picture,rea
     IDnum:IDnum,
     //samCard:samCard,
     cause:cause,
-    picture:picture,
+    //picture:picture,
     reason:reason,
   });
   window.alert("success!");
@@ -152,7 +152,7 @@ document.getElementById("select").onclick = function(e){
 }
 
 // upload the image with name of img
-document.getElementById('Scard').onclick = function(){
+document.getElementsByClassName('.Scard').onclick = function(){
   ImgName = document.getElementById('namebox').value;
   var uploadTask = firebase.storage().ref('Samudhi cards/'+ImgName+".png").put(files[0]);
 
@@ -194,13 +194,13 @@ document.getElementById("charity").onclick = function(e){
    
 }
 // upload the image with name of img
-document.getElementById('Scard').onclick = function(){
-  ImgName = document.getElementById('namebox').value;
+document.getElementsByClassName('.Scard').onclick = function(){
+  ImgName = document.getElementById('namenemail').value;
   var uploadTask = firebase.storage().ref('charity picture/'+ImgName+".png").put(files[0]);
 
   uploadTask.on('state_changed', function(snapshot){
     var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
-    document.getElementById('UpProgress').innerHTML = 'upload '+progress+'%';
+    document.getElementById('UProgress').innerHTML = 'upload '+progress+'%';
   },
 
   function(error){
