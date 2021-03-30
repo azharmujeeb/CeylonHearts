@@ -264,13 +264,13 @@ section .container.active .signinBx .imgBx {
         <div class="formBx">
           <form action=""  class="signup-form">
             <h2>start a Ceylon Hearts FUND</h2>
-             <input type="name" name="" placeholder="full name" class="name" /> 
-            <input type="email" name="" placeholder="Email Address" class="email" />
-            <input type="password" name="" placeholder="Create Password" class="pass" id="password" required/>
-            <input type="password" name="" placeholder="Confirm Password" class="conpass" id="password2" required/>
+             <input type="name" name="" placeholder="full name" class="name" id="name" /> 
+            <input type="email" name="" placeholder="Email Address" class="email" id="email" />
+            <input type="password" name="" placeholder="Create Password" class="pass" id="password" /><span id="message"> </span>
+            <input type="password" name="" placeholder="Confirm Password" class="conpass" id="password2"  /><span id="message2"> </span>
 
-            <input type="text"  placeholder="Enter your Contact Number"  class="Number" required >
-            <input type="text"  placeholder="Enter your National ID Number" class="ID">
+            <input type="text"  placeholder="Enter your Contact Number"  class="Number"  id="Number">
+            <input type="text"  placeholder="Enter your National ID Number" class="ID" id="ID">
            <hr><br>
             <p>picture of samuhdi card or NIC</p>
             <input id="namebox" type="email" placeholder="Email address again"> 
@@ -278,7 +278,7 @@ section .container.active .signinBx .imgBx {
             <label id="UpProgress"></label>
             <br>
              <div>
-              <select name="charity" class="custom-select" >
+              <select name="charity" class="custom-select" id="custom-select">
                 <option selected>Select the cause</option>
                 <option value="Education">Education</option>
                 <option value="Medical">Medical</option>
