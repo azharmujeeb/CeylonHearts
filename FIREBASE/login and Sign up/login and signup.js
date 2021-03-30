@@ -32,47 +32,92 @@
 let signupInfo = firebase.database().ref("userdetails");
 
 // Listen for a submit
-document.querySelector(".signup-form").addEventListener("submit", submitForm);
+
+document.querySelector(".signup-form").addEventListener("submit", validate);
+
+
+/*function twoFunc(){
+  if (function validate()==true) {
+    document.querySelector(".signup-form").addEventListener("password", submitForm);
+  }else{
+    window.alert("Error");
+  }
+}*/
+
+function validate(){
+
+
+  /*delete this before submission*/
+  window.alert("Validate alert");
+  
+
+  //Mujeeb's validtion
+  var a = document.getElementById("password").value;
+  var b = document.getElementById("password2").value;
+
+  if (a==null) {
+    document.getElementById("message").innerHTML="Please enter a password."
+  }
+  if (b==null) {
+    document.getElementById("message").innerHTML="Please enter a password."
+  }
+  if (a.length < 8 && b.length < 8) {
+    document.getElementById("message").innerHTML="Enter password more than 8 characters."
+    document.getElementById("message2").innerHTML="Enter password more than 8 characters."
+  }
+  if (a.length > 20 && b.length > 20) {
+    document.getElementById("message").innerHTML="Enter password less than 20 characters."
+    document.getElementById("message2").innerHTML="Enter password less than 20 characters."
+  }
+  if (a!=b) {
+    document.getElementById("message2").innerHTML="Passwords doesn't match."
+  }
+
+  submitForm(e);
+
+}
 
 function submitForm(e) {
+
   e.preventDefault();
+
+  window.alert("Submit alert");
+
    //   Get input Values
    let fullname = document.querySelector(".name").value;
    let email = document.querySelector(".email").value;
    let password = document.querySelector(".pass").value;
-   let  confirm_password = document.querySelector(".conpass").value;
    let phone = document.querySelector(".Number").value;
    let IDnum = document.querySelector(".ID").value;
-   //let samCard = document.querySelector(".Scard").value;
+   let samCard = document.querySelector(".Scard").value;
    let cause = document.querySelector(".custom-select").value;
-   //let picture = document.querySelector(".pic").value;
-   //let reason = document.querySelector(".reason").value;
+   let picture = document.querySelector(".pic").value;
+   let reason = document.querySelector(".reason").value;
    
 
 
 
-   console.log(fullname, email, password,confirm_password,phone,IDnum,cause);
+   console.log(fullname, email, password,phone,IDnum,samCard,cause,picture,reason);
 
-   saveContactInfo(fullname, email, password,confirm_password, phone, IDnum,cause);
+   saveContactInfo(fullname, email, password, phone, IDnum,samCard,cause,picture,reason);
 
    document.querySelector(".signup-form").reset(); 
 
 }
    // Save infos to Firebase
-function saveContactInfo(fullname, email, password,confirm_password,phone,IDnum,cause) {
+function saveContactInfo(fullname, email, password,phone,IDnum,samCard,cause,picture,reason) {
   let newSignupInfo = signupInfo.push();
 
   newSignupInfo.set({
     fullname: fullname,
     email: email,
     password: password,
-    confirm_password:confirm_password,
     phone:phone,
     IDnum:IDnum,
-    //samCard:samCard,
+    samCard:samCard,
     cause:cause,
-    //picture:picture,
-    //reason:reason,
+    picture:picture,
+    reason:reason,
   });
   window.alert("success!");
  
@@ -143,15 +188,14 @@ document.getElementById("select").onclick = function(e){
     files = e.target.files;
     reader = new FileReader();
     reader.onload = function(){
-     // document.getElementById("myimg").src = reader.result;
-     window.alert("photo inserted");
+      document.getElementById("myimg").src = reader.result;
     }
     reader.readAsDataURL(files[0]);
   }
-  
+
   input.click();
-   
 }
+
 
 // upload the image with name of img
 document.getElementById('Scard').onclick = function(){
@@ -167,7 +211,3 @@ document.getElementById('Scard').onclick = function(){
     alert('Error in saving the image');
   }
   )}
-
-
- 
-
