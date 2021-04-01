@@ -48,64 +48,46 @@ function saveCharitypic( email,address,message,spam) {
 	spam:spam,
     
   });
-
- //-------------------charity picture-----------------
-					//variables
-					var ImgName;
-					var Files = [];
-					var reader =  new FileReader();
-
-					//SELECTION PROCESS
-					document.getElementById("select").onclick = function(e){
-
-						var input = document.createElement('input');
-						input.type = 'file';
-
-						input.onchange = e => {
-							files = e.target.files;
-							reader = new FileReader();
-							reader.onload = function(){
-							//document.getElementById("myimg").src = reader.result;
-							}
-							reader.readAsDataURL(files[0]);
-						}
-
-						input.click();
-
-						
-					}
-				
-
-					//UPLOAD PROCESS
-					document.getElementById('pic').onclick = function(){
-						ImgName = document.getElementById('namebox').value;
-						var uploadTask = firebase.storage().ref('charity/'+ImgName+".png").put(files[0]);
-
-						uploadTask.on('state_changed', function(snapshot){
-							var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
-							document.getElementById('UpProgress').innerHTML = 'upload '+progress+'%';
-						},
-
-						function(error){
-							alert('Error in saving the image');
-						},
-						alert('Image added successfully.')
-					
-					/*	function(){
-							uploadTask.snapshot.ref.getDownloadURL().then(function(url){
-								ImgUrl = url;
-							});
-
-							firebase.database().ref('charity/'+ImgName).set({
-								Name: ImgName,
-								Link: ImgUrl
-							});
-							
-					*/	
-
-						);
-					}
 window.alert("success!");
-  };
+}
+//select the img
+				//variables
+				var ImgName, ImgUrl;
+				var Files = [];
+				var reader =  new FileReader();
+//SELECTION PROCESS
+document.getElementById("select").onclick = function(e){
+
+  var input = document.createElement('input');
+  input.type = 'file';
+
+  input.onchange = e => {
+    files = e.target.files;
+    reader = new FileReader();
+    reader.onload = function(){
+     // document.getElementById("myimg").src = reader.result;
+    }
+    reader.readAsDataURL(files[0]);
+  }
+
+  input.click();
+}
+
+
+// upload the image with name of img
+document.getElementById('pic').onclick = function(){
+  ImgName = document.getElementById('namebox').value;
+  var uploadTask = firebase.storage().ref('charity/'+ImgName+".png").put(files[0]);
+
+  uploadTask.on('state_changed', function(snapshot){
+    var progress = (snapshot.bytesTranferred / snapshot.totalBytes)*100;
+    document.getElementById('UpProgress').innerHTML = 'upload '+progress+'%';
+  },
+
+  function(error){
+    alert('Error in saving the image');
+  }
+  )}
+
 				        
 					

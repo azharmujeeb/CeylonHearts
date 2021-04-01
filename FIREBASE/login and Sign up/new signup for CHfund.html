@@ -29,7 +29,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 section .container {
@@ -214,6 +214,22 @@ section .container.active .signinBx .imgBx {
   cursor: pointer;
 }
 
+
+button {
+  display: block;
+  
+  line-height: 24pt;
+  padding: 0 20px;
+  border: none;
+  background: #f45702;
+  color: white;
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  border-bottom: 2px solid transparent;
+  outline: none;
+}
+
+
 </style>
 
   <script>
@@ -229,21 +245,21 @@ section .container.active .signinBx .imgBx {
 </script>
 
 </head>
-
-<body translate="no" >
+<body translate="no">
   <body>
   <section>
   <div class="container">
   <div class="user signinBx">
         <div class="imgBx"><img src="https://www.i-believe.org/wp-content/uploads/2017/10/1544293_1280x720-1170x658.jpg" alt="" /></div>
         <div class="formBx">
-          <form action="" class="login-form"">
+          <form action="" class="login-form">
            <img src="Ceylon hearts logo.jpeg" style="padding-left: 120px; padding-bottom: 20px;" alt="logo">
             <br><br>
             <div id="login_div">
             <h2>Sign In</h2>
             <input type="email" placeholder="Email..." id="email_field" />
             <input type="password" placeholder="Password..." id="password_field" />
+            <br>
             <button type="submit" name="" value="Login" onclick="login()"> login </button>
             </div>
             <!--logout button-->
@@ -280,16 +296,17 @@ section .container.active .signinBx .imgBx {
                 <option selected>Select the cause</option>
                 <option value="Education">Education</option>
                 <option value="Medical">Medical</option>
-                <option value="Emergency">Emergency</option>
                 <option value="Animals">Animals</option>
                 <option value="covid 19">Covid 19</option>
-                
+
               </select>
             </div>
+            <br>   
+           <span>
+            <button type="submit" name="" value="Sign Up" id="Scard" > submit </button>
             
-            
-           
-            <button type="submit" name="" value="Sign Up" id="Scard"> submit </button>
+            <a href="http://localhost:65080/charity%20form/new%20charity.html" target="_blank">next</a>
+          </span>
             <p class="signup">
               Already have an account ?
               <a href="#" onclick="toggleForm();">Sign in.</a>

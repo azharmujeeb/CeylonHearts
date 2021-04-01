@@ -113,9 +113,9 @@ function saveSignupinfo(fullname, email, password,phone,IDnum,cause) {
     //picture:picture,
     //reason:reason,
   });
-  window.alert("success!")
+ window.alert("To continue please click next!")
  
-
+ 
   };
 
   // login firebase 
@@ -130,7 +130,7 @@ function saveSignupinfo(fullname, email, password,phone,IDnum,cause) {
       var user = firebase.auth().currentUser;
   
       if(user != null){
-  
+        
         var email_id = user.email;
         document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
   
@@ -205,3 +205,5 @@ document.getElementById('Scard').onclick = function(){
     alert('Error in saving the image');
   }
   )}
+
+  

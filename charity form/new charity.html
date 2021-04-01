@@ -19,6 +19,7 @@
 
 body {
   background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2044837-jpeg.jpg") center center no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -145,7 +146,7 @@ textarea:-webkit-autofill:focus {
     <label for="customerNote">Add image of the charity below<em>&#x2a;</em></label>
     <br>
     <input  id="select" name="charitypic" placeholder="click here to add a the picture">
-    <br>
+    <br><label id="UpProgress"></label> <br>
     <label for="customerNote">YOUR REASON TO START A CHFUND <em>&#x2a;</em></label>
       	<textarea
         class="message"
@@ -159,8 +160,8 @@ textarea:-webkit-autofill:focus {
     </h3>
     <label for="spamProtection">SPAM PROTECTION <em>&#x2a; </em><span>&nbsp;&nbsp;&nbsp;&nbsp;What day comes before July 11th?</span></label>
     <input id="spamProtection" name="spamProtection" type="text" class="spam" />
-    <label id="UpProgress"></label> <br>
-    <button id="pic" type="submit">SUBMIT</button>
+    
+    <button id="pic" value="SUBMIT" type="submit">SUBMIT</button>
   </form>
 </div>
 
