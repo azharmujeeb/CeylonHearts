@@ -29,11 +29,11 @@
   firebase.initializeApp(firebaseConfig);
 
 // referencing the users 
-let signupInfo = firebase.database().ref("userdetails");
+let signupinfo = firebase.database().ref("userdetails");
 
 // Listen for a submit
 
-document.querySelector(".signup-form").addEventListener("submit", validate);
+document.querySelector(".signup-form").addEventListener("submit", submitForm);
 
 
 /*function twoFunc(){
@@ -44,12 +44,8 @@ document.querySelector(".signup-form").addEventListener("submit", validate);
   }
 }*/
 
-function validate(){
 
-
-  /*delete this before submission*/
-  window.alert("Validate alert");
-  
+  /*
 
   //Mujeeb's validtion
   var a = document.getElementById("password").value;
@@ -76,12 +72,10 @@ function validate(){
   submitForm(e);
 
 }
-
+*/
 function submitForm(e) {
 
   e.preventDefault();
-
-  window.alert("Submit alert");
 
    //   Get input Values
    let fullname = document.querySelector(".name").value;
@@ -89,24 +83,24 @@ function submitForm(e) {
    let password = document.querySelector(".pass").value;
    let phone = document.querySelector(".Number").value;
    let IDnum = document.querySelector(".ID").value;
-   let samCard = document.querySelector(".Scard").value;
+   //let samCard = document.querySelector(".Scard").value;
    let cause = document.querySelector(".custom-select").value;
-   let picture = document.querySelector(".pic").value;
-   let reason = document.querySelector(".reason").value;
+   //let picture = document.querySelector(".pic").value;
+   //let reason = document.querySelector(".reason").value;
    
 
 
 
-   console.log(fullname, email, password,phone,IDnum,samCard,cause,picture,reason);
+   console.log(fullname, email, password,phone,IDnum,cause);
 
-   saveContactInfo(fullname, email, password, phone, IDnum,samCard,cause,picture,reason);
+   saveSignupinfo(fullname, email, password, phone, IDnum,cause);
 
    document.querySelector(".signup-form").reset(); 
 
 }
    // Save infos to Firebase
-function saveContactInfo(fullname, email, password,phone,IDnum,samCard,cause,picture,reason) {
-  let newSignupInfo = signupInfo.push();
+function saveSignupinfo(fullname, email, password,phone,IDnum,cause) {
+  let newSignupInfo = signupinfo.push();
 
   newSignupInfo.set({
     fullname: fullname,
@@ -114,12 +108,12 @@ function saveContactInfo(fullname, email, password,phone,IDnum,samCard,cause,pic
     password: password,
     phone:phone,
     IDnum:IDnum,
-    samCard:samCard,
+    //samCard:samCard,
     cause:cause,
-    picture:picture,
-    reason:reason,
+    //picture:picture,
+    //reason:reason,
   });
-  window.alert("success!");
+  window.alert("success!")
  
 
   };
@@ -188,7 +182,7 @@ document.getElementById("select").onclick = function(e){
     files = e.target.files;
     reader = new FileReader();
     reader.onload = function(){
-      document.getElementById("myimg").src = reader.result;
+     // document.getElementById("myimg").src = reader.result;
     }
     reader.readAsDataURL(files[0]);
   }

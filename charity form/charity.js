@@ -25,17 +25,19 @@ function submitForm(e) {
    let email = document.querySelector(".email").value;
    let address = document.querySelector(".address").value;
    let message= document.querySelector(".message").value;
+   let spam= document.querySelector(".spam").value;
 
 
-   console.log(email,address,message);
 
-   saveCharitypic(email,address,message);
+   console.log(email,address,message,spam);
+
+   saveCharitypic(email,address,message,spam);
 
   // document.querySelector(".charity-form").reset(); 
 
 }
    // Save infos to Firebase
-function saveCharitypic( email,address,message) {
+function saveCharitypic( email,address,message,spam) {
   let newCharitypic = Charitypic.push();
 
   newCharitypic.set({
@@ -43,14 +45,11 @@ function saveCharitypic( email,address,message) {
     email: email,
     address:address,
     message:message,
+	spam:spam,
     
   });
-// window.alert("success!");
- 
 
-  };
-				        
-					//-------------------charity picture-----------------
+ //-------------------charity picture-----------------
 					//variables
 					var ImgName;
 					var Files = [];
@@ -75,7 +74,7 @@ function saveCharitypic( email,address,message) {
 
 						
 					}
-					
+				
 
 					//UPLOAD PROCESS
 					document.getElementById('pic').onclick = function(){
@@ -87,11 +86,11 @@ function saveCharitypic( email,address,message) {
 							document.getElementById('UpProgress').innerHTML = 'upload '+progress+'%';
 						},
 
-
 						function(error){
 							alert('Error in saving the image');
 						},
-
+						alert('Image added successfully.')
+					
 					/*	function(){
 							uploadTask.snapshot.ref.getDownloadURL().then(function(url){
 								ImgUrl = url;
@@ -101,8 +100,12 @@ function saveCharitypic( email,address,message) {
 								Name: ImgName,
 								Link: ImgUrl
 							});
-							alert('Image added successfully.');
+							
 					*/	
 
 						);
 					}
+window.alert("success!");
+  };
+				        
+					

@@ -7,7 +7,13 @@
 body {
   font-family: inter;
   font-weight: normal;
-  background: rgb(247, 182, 139);
+  
+    background-image: url('https://wallpapercave.com/wp/wp1857978.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+   color:white;
+  
 }
 
 h1 {
