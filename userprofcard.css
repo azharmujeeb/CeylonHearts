@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  max-width: 700px;
   margin: auto;
   text-align: center;
   font-family: arial;
@@ -38,19 +34,3 @@ a {
 button:hover, a:hover {
   opacity: 0.7;
 }
-</style>
-</head>
-<body>
-
-
-<div class="card">
-  <img src="slfamily.jpg" alt="John" style="width:100%">
-  <h1>Maria Pereira</h1>
-  <p class="title">Covid-19</p>
-  <p>Financial support due to Covid.</p>
-
-  <p><button>View More</button></p>
-</div>
-
-</body>
-</html>
