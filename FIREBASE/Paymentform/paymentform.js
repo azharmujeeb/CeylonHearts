@@ -30,7 +30,7 @@ function submitForm(e) {
 
    saveDonations(fullname, email,amount);
 
-   document.querySelector(".signup-form").reset(); 
+   document.querySelector(".payment").reset(); 
 
 }
    // Save infos to Firebase
@@ -45,7 +45,7 @@ function saveDonations(fullname, email, amount) {
     //picture:picture,
     //reason:reason,
   });
-  window.alert("success!");
+  window.alert("Thank you for your kind donation!");
  
 
   };
