@@ -33,7 +33,7 @@ function submitForm(e) {
 
    saveCharitypic(email,address,message,spam);
 
-  // document.querySelector(".charity-form").reset(); 
+  document.querySelector(".charity-form").reset(); 
 
 }
    // Save infos to Firebase
